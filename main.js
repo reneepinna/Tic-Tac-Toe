@@ -3,15 +3,17 @@
 // Global Variables
 
 var players = {
-  player1: {
+  'player1': {
     wins: 0,
     token: '🍊',
     moves: [],
+    isTurn: true,
   },
-  player2: {
+  'player2': {
     wins: 0,
     token: '🥝',
     moves: [],
+    isTurn: false,
   }
 }
 
@@ -28,5 +30,8 @@ function addPlayerMove(player, space) {
 
 function clearPlayerMoves(player) {
     players[player].moves.splice(0);
-  
+}
+
+function toggleTurn(player) {
+  players[player].isTurn = !players[player].isTurn;
 }
