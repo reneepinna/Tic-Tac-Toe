@@ -57,3 +57,16 @@ function checkForWin(player) {
   }
 }
 
+function evaluateWinCondition(player, winCondition) {
+  var tally = 0;
+  for (var i = 0; i < winCondition.length; i++) {
+    if (players[player].moves.includes(winCondition[i])) {
+      tally++;
+   
+    }
+  }
+
+  if (tally === 3) {
+    return true;
+  }
+}
