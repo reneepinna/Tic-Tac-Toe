@@ -9,10 +9,14 @@ var players = {
   },
   player2: {
     wins: 0,
-    token: '🍈',
+    token: '🥝',
   }
 }
 
 // Event Listeners
 
 // Functions and Event Handlers
+
+function increaseWins(winner) {
+  players[winner].wins++;
+}
