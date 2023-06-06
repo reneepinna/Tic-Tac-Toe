@@ -1,10 +1,30 @@
-* {
+/* --------------- Global Rules --------------- */
+
+/* colors {
+  orange: #FF9F1C
+  pale-orange: #FFBF69
+  white: #FFFFFF
+  pale-mint: #CBF3F0
+  mint: #2EC4B6
+} */
+
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   margin: 0;
   font-family: 'Merriweather', serif;
+  text-align: center;
 }
 
 html,
 body {
   height: 100%;
+}
+
+.player-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: ;
 }
