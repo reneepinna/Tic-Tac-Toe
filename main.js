@@ -22,7 +22,9 @@ function increaseWins(player) {
   players[player].wins++;
 }
 
-
+function addPlayerMove(player, space) {
+  players[player].moves.push(space);
+}
 
 function clearPlayerMoves(player) {
     players[player].moves.splice(0);
