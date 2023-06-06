@@ -6,12 +6,12 @@ var players = {
   player1: {
     wins: 0,
     token: '🍊',
-    spaces: [],
+    moves: [],
   },
   player2: {
     wins: 0,
     token: '🥝',
-    spaces: [],
+    moves: [],
   }
 }
 
@@ -22,7 +22,9 @@ function increaseWins(player) {
   players[player].wins++;
 }
 
-function clearPlayerSpaces(player) {
-    players[player].spaces.splice(0);
+
+
+function clearPlayerMoves(player) {
+    players[player].moves.splice(0);
   
 }
