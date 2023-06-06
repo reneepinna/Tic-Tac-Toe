@@ -3,10 +3,12 @@
 /* colors {
   orange: #FF9F1C
   pale-orange: #FFBF69
-  white: #FFFFFF
+  between: #E5ECDA
   pale-mint: #CBF3F0
   mint: #2EC4B6
 } */
+
+
 
 *,
 *:before,
@@ -22,9 +24,29 @@ body {
   height: 100%;
 }
 
-.player-section {
+body {
+  display: flex;
+}
+
+.player-bar {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  background-color: ;
+  justify-content: center;
+  height: 100%;
+}
+
+#player-1 {
+  background-color: #FF9F1C;
+  width: 25%;
+}
+
+#player-2 {
+  background-color: #2EC4B6;
+  width: 25%;
+}
+
+.main {
+  background-color: #E5ECDA;
+  height: 100%;
+  width: 50%;
 }
