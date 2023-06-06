@@ -8,8 +8,6 @@
   mint: #2EC4B6
 } */
 
-
-
 *,
 *:before,
 *:after {
@@ -46,7 +44,22 @@ body {
 }
 
 .main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   background-color: #E5ECDA;
   height: 100%;
+  width: 50%;
+}
+
+h2 {
+  color: #29524a;
+}
+
+#tac-container {
+  display: grid;
+  border:#29524a solid 2px;
+  height: 46%;
   width: 50%;
 }
