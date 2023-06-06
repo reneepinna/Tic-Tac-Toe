@@ -14,7 +14,6 @@ var players = {
 }
 
 // Event Listeners
-
 // Functions and Event Handlers
 
 function increaseWins(winner) {
