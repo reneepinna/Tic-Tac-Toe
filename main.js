@@ -16,6 +16,7 @@ var players = {
     isTurn: false,
   }
 }
+var totalMoves = 0;
 
 // Event Listeners
 // Functions and Event Handlers
@@ -60,13 +61,16 @@ function checkForWin(player) {
 function evaluateWinCondition(player, winCondition) {
   var tally = 0;
   for (var i = 0; i < winCondition.length; i++) {
-    if (players[player].moves.includes(winCondition[i])) {
-      tally++;
-   
-    }
+    if (players[player].moves.includes(winCondition[i])) tally++;
   }
 
   if (tally === 3) {
     return true;
+  }
+}
+
+function checkForDraw() {
+  if (totalMoves >= 9) {
+    console.log(`There has been a draw`);
   }
 }
