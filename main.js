@@ -25,7 +25,12 @@ tacContainer.addEventListener('click', function(e) {
   if (e.target.className.includes('open')) {
     addPlayerMove(getWhosTurn(), getMoveSpace(e));
     updateAllMoves(getMoveSpace(e));
+    toggleAvailability();
     renderToken(getWhosTurn(), getMoveSpace(e));
+
+    checkBoard()
+
+    toggleTurn();
 
   }
   //render 
@@ -49,13 +54,16 @@ function addPlayerMove(player, space) {
   players[player].moves.push(space);
 }
 
-function clearPlayerMoves(player) {
-    players[player].moves.splice(0);
+function clearPlayerMoves() {
+    players.player1.moves.splice(0);
+    players.player2.moves.splice(0);
     allMoves.splice(0);
 }
 
-function toggleTurn(player) {
-  players[player].isTurn = !players[player].isTurn;
+function toggleTurn() {
+  players.player1.isTurn = !players.player1.isTurn;
+  players.player2.isTurn = !players.player1.isTurn;
+
 }
 
 function updateAllMoves(space){
@@ -65,22 +73,24 @@ function updateAllMoves(space){
 function checkForWin(player) {
   
   winConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
+    ['0', '1', '2'],
+    ['3', '4', '5'],
+    ['6', '7', '8'],
+    ['0', '3', '6'],
+    ['1', '4', '7'],
+    ['2', '5', '8'],
+    ['0', '4', '8'],
+    ['2', '4', '6'],
   ]
   
   for (var i = 0; i < winConditions.length; i++) {
     if (evaluateWinCondition(player, winConditions[i])) {
       increaseWins(player);
-      return;
+      return true;
     }
   }
+
+  return false;
 }
 
 function evaluateWinCondition(player, winCondition) {
@@ -116,4 +126,14 @@ function getMoveSpace(e) {
 
 function renderToken(player, space) {
   tacBoxes[parseInt(space)].classList.add(player);
+}
+
+function checkBoard() {
+  var winner = false;
+  winner = checkForWin(getWhosTurn());
+  checkForDraw();
+
+  if (winner) {
+    clearPlayerMoves();
+  }
 }
