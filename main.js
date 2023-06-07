@@ -1,6 +1,6 @@
 // Query Selectors
 var tacContainer = document.getElementById('tac-container');
-var tacBoxes = document.querySelectorAll('.tac-container');
+var tacBoxes = document.querySelectorAll('.tac-box');
 // Global Variables
 
 var players = {
@@ -89,5 +89,11 @@ function checkForDraw() {
 }
 
 function toggleAvailability() {
-  for (var i = 0; i < allMoves.length; )
+  for (var i = 0; i < tacBoxes.length; i++) {
+    if( allMoves.includes(tacBoxes[i].id)) {
+      tacBoxes[i].classList.remove('open');
+    } else {
+      tacBoxes[i].classList.add('open');
+    }
+  }
 }
