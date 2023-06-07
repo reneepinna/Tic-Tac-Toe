@@ -57,7 +57,28 @@ h2 {
 
 #tac-container {
   display: grid;
-  border:#29524a solid 2px;
+  grid-template-columns: 32% 32% 32%;
+  grid-template-rows: 32% 32% 32%;
+  column-gap: 2%;
+  row-gap: 2%;
+  background-color: #29524a;
   height: 46%;
   width: 50%;
+}
+
+.tac-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F1EACF;
+}
+
+.player1::before {
+  content: '\1F34A';
+  font-size: xxx-large;
+}
+
+.player2::before {
+  content: '\1F95D';
+  font-size: xxx-large;
 }
