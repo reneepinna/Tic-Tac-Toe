@@ -1,5 +1,6 @@
 // Query Selectors
-  
+var tacContainer = document.getElementById('tac-container');
+var tacBoxes = document.querySelectorAll('.tac-container');
 // Global Variables
 
 var players = {
@@ -19,6 +20,15 @@ var players = {
 var totalMoves = 0;
 
 // Event Listeners
+
+tacContainer.addEventListener('click', function(e) {
+  //did they click in a space
+  //is the space empty
+  //which space did they click on
+  //which player turn is it
+  //render 
+})
+
 // Functions and Event Handlers
 
 function increaseWins(player) {
