@@ -17,12 +17,14 @@ var players = {
     isTurn: false,
   }
 }
-var totalMoves = 0;
+var allMoves = [];
 
 // Event Listeners
 
 tacContainer.addEventListener('click', function(e) {
-  //did they click in a space
+  if (e.target.className.includes('open')) {
+
+  }
   //is the space empty
   //which space did they click on
   //which player turn is it
@@ -41,6 +43,7 @@ function addPlayerMove(player, space) {
 
 function clearPlayerMoves(player) {
     players[player].moves.splice(0);
+    allMoves.splice(0);
 }
 
 function toggleTurn(player) {
@@ -80,7 +83,11 @@ function evaluateWinCondition(player, winCondition) {
 }
 
 function checkForDraw() {
-  if (totalMoves >= 9) {
+  if (allMoves.length >= 9) {
     console.log(`There has been a draw`);
   }
+}
+
+function toggleAvailability() {
+  for (var i = 0; i < allMoves.length; )
 }
