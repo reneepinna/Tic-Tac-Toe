@@ -78,12 +78,12 @@ h2 {
   background-color: #F1EACF;
 }
 
-.player1::before {
+.orange::before {
   content: '\1F34A';
   font-size: xxx-large;
 }
 
-.player2::before {
+.kiwi::before {
   content: '\1F95D';
   font-size: xxx-large;
 }

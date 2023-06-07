@@ -1,18 +1,19 @@
 // Query Selectors
 var tacContainer = document.getElementById('tac-container');
 var tacBoxes = document.querySelectorAll('.tac-box');
+
 // Global Variables
 
 var board = {
   'player1': {
     wins: 0,
-    token: '🍊',
+    token: 'orange',
     moves: [],
     isTurn: true,
   },
   'player2': {
     wins: 0,
-    token: '🥝',
+    token: 'kiwi',
     moves: [],
     isTurn: false,
   },
@@ -134,7 +135,7 @@ function getMoveSpace(e) {
 }
 
 function renderToken(player, space) {
-  tacBoxes[parseInt(space)].classList.add(player);
+  tacBoxes[parseInt(space)].classList.add(board[player].token);
 }
 
 function clearTokens() {
