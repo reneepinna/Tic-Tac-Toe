@@ -3,7 +3,7 @@ var tacContainer = document.getElementById('tac-container');
 var tacBoxes = document.querySelectorAll('.tac-box');
 // Global Variables
 
-var players = {
+var board = {
   'player1': {
     wins: 0,
     token: '🍊',
@@ -15,9 +15,10 @@ var players = {
     token: '🥝',
     moves: [],
     isTurn: false,
-  }
+  },
+  allMoves: [],
 }
-var allMoves = [];
+
 
 // Event Listeners
 
@@ -38,8 +39,16 @@ tacContainer.addEventListener('click', function(e) {
 
 // Functions and Event Handlers
 
+function createPlayer(name, token) {
+  board[name] = {
+    token: token,
+    moves: [],
+    wins: 0
+  }
+}
+
 function getWhosTurn() {
-  if (players.player1.isTurn){
+  if (board.player1.isTurn){
     return "player1";
   } else {
     return "player2";
@@ -47,27 +56,27 @@ function getWhosTurn() {
 }
 
 function increaseWins(player) {
-  players[player].wins++;
+  board[player].wins++;
 }
 
 function addPlayerMove(player, space) {
-  players[player].moves.push(space);
+  board[player].moves.push(space);
 }
 
 function clearPlayerMoves() {
-    players.player1.moves.splice(0);
-    players.player2.moves.splice(0);
-    allMoves.splice(0);
+    board.player1.moves.splice(0);
+    board.player2.moves.splice(0);
+    board.allMoves.splice(0);
 }
 
 function toggleTurn() {
-  players.player1.isTurn = !players.player1.isTurn;
-  players.player2.isTurn = !players.player1.isTurn;
+  board.player1.isTurn = !board.player1.isTurn;
+  board.player2.isTurn = !board.player1.isTurn;
 
 }
 
 function updateAllMoves(space){
-  allMoves.push(space);
+  board.allMoves.push(space);
 }
 
 function checkForWin(player) {
@@ -96,7 +105,7 @@ function checkForWin(player) {
 function evaluateWinCondition(player, winCondition) {
   var tally = 0;
   for (var i = 0; i < winCondition.length; i++) {
-    if (players[player].moves.includes(winCondition[i])) tally++;
+    if (board[player].moves.includes(winCondition[i])) tally++;
   }
 
   if (tally === 3) {
@@ -105,14 +114,14 @@ function evaluateWinCondition(player, winCondition) {
 }
 
 function checkForDraw() {
-  if (allMoves.length >= 9) {
+  if (board.allMoves.length >= 9) {
     console.log(`There has been a draw`);
   }
 }
 
 function toggleAvailability() {
   for (var i = 0; i < tacBoxes.length; i++) {
-    if( allMoves.includes(tacBoxes[i].id)) {
+    if (board.allMoves.includes(tacBoxes[i].id)) {
       tacBoxes[i].classList.remove('open');
     } else {
       tacBoxes[i].classList.add('open');
@@ -130,7 +139,7 @@ function renderToken(player, space) {
 
 function clearTokens() {
   for (var i = 0; i < tacBoxes.length; i++) {
-    if (players.player1.moves.includes(tacBoxes[i].id)){
+    if (board.player1.moves.includes(tacBoxes[i].id)){
       tacBoxes[i].classList.remove('player1')
     } else {
       tacBoxes[i].classList.remove('player2')
