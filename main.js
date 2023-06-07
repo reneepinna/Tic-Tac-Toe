@@ -32,6 +32,14 @@ tacContainer.addEventListener('click', function(e) {
 
 // Functions and Event Handlers
 
+function getWhosTurn() {
+  if (player1.isTurn){
+    return "player1";
+  } else {
+    return "player2";
+  }
+}
+
 function increaseWins(player) {
   players[player].wins++;
 }
