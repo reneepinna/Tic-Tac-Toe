@@ -57,8 +57,11 @@ h2 {
 
 #tac-container {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-template-rows: 33% 33% 33%;
+  grid-template-columns: 32% 32% 32%;
+  grid-template-rows: 32% 32% 32%;
+  column-gap: 2%;
+  row-gap: 2%;
+  background-color: #29524a;
   height: 46%;
   width: 50%;
 }
@@ -67,7 +70,6 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: #87a330 2px solid;
   background-color: #F1EACF;
 }
 
