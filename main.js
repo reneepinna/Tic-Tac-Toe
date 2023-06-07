@@ -25,7 +25,6 @@ tacContainer.addEventListener('click', function(e) {
   if (e.target.className.includes('open')) {
 
   }
-  //is the space empty
   //which space did they click on
   //which player turn is it
   //render 
@@ -48,6 +47,10 @@ function clearPlayerMoves(player) {
 
 function toggleTurn(player) {
   players[player].isTurn = !players[player].isTurn;
+}
+
+function updateAllMoves(space){
+  allMoves.push(space);
 }
 
 function checkForWin(player) {
