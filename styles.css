@@ -1,11 +1,9 @@
 /* --------------- Global Rules --------------- */
 
 /* colors {
-  orange: #FF9F1C
-  pale-orange: #FFBF69
-  between: #E5ECDA
-  pale-mint: #CBF3F0
-  mint: #2EC4B6
+  orange: #fd9e02;
+  mid-tone: #F1EACF;
+  green: #87a330;
 } */
 
 *,
@@ -34,12 +32,12 @@ body {
 }
 
 #player-1 {
-  background-color: #FF9F1C;
+  background-color: #fd9e02;
   width: 25%;
 }
 
 #player-2 {
-  background-color: #2EC4B6;
+  background-color: #87a330;
   width: 25%;
 }
 
@@ -48,7 +46,7 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #E5ECDA;
+  background-color: #F1EACF;
   height: 100%;
   width: 50%;
 }
