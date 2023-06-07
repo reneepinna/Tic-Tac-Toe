@@ -73,12 +73,12 @@ h2 {
   background-color: #F1EACF;
 }
 
-.player-1::before {
+.player1::before {
   content: '\1F34A';
   font-size: xxx-large;
 }
 
-.player-2::before {
+.player2::before {
   content: '\1F95D';
   font-size: xxx-large;
 }
