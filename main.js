@@ -2,6 +2,9 @@
 var tacContainer = document.getElementById('tac-container');
 var tacBoxes = document.querySelectorAll('.tac-box');
 
+var player1Win = document.getElementById('player1-wins');
+var player2Win = document.getElementById('player2-wins');
+
 // Global Variables
 
 var board = {
@@ -120,6 +123,8 @@ function checkForDraw() {
   }
 }
 
+// ----DOM-----
+
 function toggleAvailability() {
   for (var i = 0; i < tacBoxes.length; i++) {
     if (board.allMoves.includes(tacBoxes[i].id)) {
@@ -158,4 +163,10 @@ function checkBoard() {
     clearPlayerMoves();
     
   }
+}
+
+function renderPlayerWins() {
+  
+  player1Win.innerText = `Wins: ${board.player1.wins}`;
+  player2Win.innerText = `Wins: ${board.player2.wins}`;
 }
