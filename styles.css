@@ -41,8 +41,18 @@ body {
   width: 25%;
 }
 
-h2 {
+.circle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin-top: 10%;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  background-color: #F1EACF;
+}
+
+h2 {
   font-size: xxx-large;
 }
 
