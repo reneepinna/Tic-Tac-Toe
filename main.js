@@ -23,17 +23,18 @@ var allMoves = [];
 
 tacContainer.addEventListener('click', function(e) {
   if (e.target.className.includes('open')) {
+    addPlayerMove(getWhosTurn(), getMoveSpace(e));
+    updateAllMoves(getMoveSpace(e));
+    renderToken(getWhosTurn(), getMoveSpace(e));
 
   }
-  //which space did they click on
-  //which player turn is it
   //render 
 })
 
 // Functions and Event Handlers
 
 function getWhosTurn() {
-  if (player1.isTurn){
+  if (players.player1.isTurn){
     return "player1";
   } else {
     return "player2";
@@ -111,4 +112,8 @@ function toggleAvailability() {
 
 function getMoveSpace(e) {
   return e.target.id;
+}
+
+function renderToken(player, space) {
+  tacBoxes[parseInt(space)].classList.add(player);
 }
