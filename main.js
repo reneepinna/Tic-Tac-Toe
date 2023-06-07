@@ -4,23 +4,15 @@ var tacBoxes = document.querySelectorAll('.tac-box');
 // Global Variables
 
 var board = {
-  'player1': {
-    wins: 0,
-    token: '🍊',
-    moves: [],
-    isTurn: true,
-  },
-  'player2': {
-    wins: 0,
-    token: '🥝',
-    moves: [],
-    isTurn: false,
-  },
   allMoves: [],
 }
 
 
 // Event Listeners
+window.addEventListener('load', function(){
+  createPlayer("player1", "kiwi", true);
+  createPlayer("player2", "orange", false);
+})
 
 tacContainer.addEventListener('click', function(e) {
   if (e.target.className.includes('open')) {
@@ -39,11 +31,12 @@ tacContainer.addEventListener('click', function(e) {
 
 // Functions and Event Handlers
 
-function createPlayer(name, token) {
+function createPlayer(name, token, isTurn) {
   board[name] = {
     token: token,
     moves: [],
-    wins: 0
+    wins: 0,
+    isTurn: isTurn
   }
 }
 

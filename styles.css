@@ -31,6 +31,17 @@ body {
   height: 100%;
 }
 
+.circle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 150px;
+  width: 150px;
+  margin-top: 10%;
+  border-radius: 50%;
+  background-color: #F1EACF;
+}
+
 #player-1 {
   background-color: #fd9e02;
   width: 25%;
@@ -42,7 +53,6 @@ body {
 }
 
 h2 {
-  margin-top: 10%;
   font-size: xxx-large;
 }
 
@@ -78,12 +88,12 @@ h2 {
   background-color: #F1EACF;
 }
 
-.player1::before {
+.orange::before {
   content: '\1F34A';
   font-size: xxx-large;
 }
 
-.player2::before {
+.kiwi::before {
   content: '\1F95D';
   font-size: xxx-large;
 }
