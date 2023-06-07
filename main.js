@@ -128,12 +128,24 @@ function renderToken(player, space) {
   tacBoxes[parseInt(space)].classList.add(player);
 }
 
+function clearTokens() {
+  for (var i = 0; i < tacBoxes.length; i++) {
+    if (players.player1.moves.includes(tacBoxes[i].id)){
+      tacBoxes[i].classList.remove('player1')
+    } else {
+      tacBoxes[i].classList.remove('player2')
+    }
+  }
+}
+
 function checkBoard() {
   var winner = false;
   winner = checkForWin(getWhosTurn());
   checkForDraw();
 
   if (winner) {
+    clearTokens();
     clearPlayerMoves();
+    
   }
 }
