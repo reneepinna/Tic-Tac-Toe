@@ -108,3 +108,7 @@ function toggleAvailability() {
     }
   }
 }
+
+function getMoveSpace(e) {
+  return e.target.id;
+}
