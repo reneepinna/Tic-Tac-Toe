@@ -9,20 +9,6 @@ var turnMessage = document.getElementById('turn-message');
 // Global Variables
 
 var board = {
-  // 'player1': {
-  //   wins: 0,
-  //   tokenStyle: 'orange',
-  //   token: '🍊',
-  //   moves: [],
-  //   isTurn: true,
-  // },
-  // 'player2': {
-  //   wins: 0,
-  //   tokenStyle: 'kiwi',
-  //   token: '🥝',
-  //   moves: [],
-  //   isTurn: false,
-  // },
   allMoves: [],
 }
 
@@ -131,21 +117,25 @@ function evaluateWinCondition(player, winCondition) {
 
 function checkForDraw() {
   if (board.allMoves.length >= 9) {
-    console.log(`There has been a draw`);
+    return true;
   }
 }
 
 function checkBoard() {
   var winner = false;
   winner = checkForWin(getWhosTurn());
-  checkForDraw();
-
   if (winner) {
     renderPlayerWins();
-    clearTokens();
-    clearPlayerMoves();
-    toggleAvailability();
+    resetBoard();
+  } else if (checkForDraw()) {
+    resetBoard();
   }
+}
+
+function resetBoard() {
+  clearTokens();
+  clearPlayerMoves();
+  toggleAvailability();
 }
 
 // ----DOM-----
