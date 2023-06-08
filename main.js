@@ -125,8 +125,10 @@ function checkBoard() {
   var winner = false;
   winner = checkForWin(getWhosTurn());
   if (winner) {
+    renderGameEnd(getWhosTurn());
     renderPlayerWins();
     resetBoard();
+    
   } else if (checkForDraw()) {
     resetBoard();
   }
@@ -175,4 +177,8 @@ function renderPlayerWins() {
 
 function renderPlayerTurn() {
   turnMessage.innerText = `It's ${board[getWhosTurn()].token}'s turn!`
+}
+
+function renderGameEnd(player) {
+  turnMessage.innerText = `${board[player].token} Wins!`
 }
