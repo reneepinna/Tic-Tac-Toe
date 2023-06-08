@@ -5,18 +5,21 @@ var tacBoxes = document.querySelectorAll('.tac-box');
 var player1Win = document.getElementById('player1-wins');
 var player2Win = document.getElementById('player2-wins');
 
+var turnMessage = document.getElementById('turn-message');
 // Global Variables
 
 var board = {
   'player1': {
     wins: 0,
-    token: 'orange',
+    tokenStyle: 'orange',
+    token: '🍊',
     moves: [],
     isTurn: true,
   },
   'player2': {
     wins: 0,
-    token: 'kiwi',
+    tokenStyle: 'kiwi',
+    token: '🥝',
     moves: [],
     isTurn: false,
   },
@@ -33,9 +36,10 @@ tacContainer.addEventListener('click', function(e) {
     toggleAvailability();
     renderToken(getWhosTurn(), getMoveSpace(e));
 
-    checkBoard()
+    checkBoard();
 
     toggleTurn();
+    renderPlayerTurn();
 
   }
   //render 
@@ -43,9 +47,11 @@ tacContainer.addEventListener('click', function(e) {
 
 // Functions and Event Handlers
 
-function createPlayer(name, token) {
-  board[name] = {
-    token: token,
+function createPlayer(position, name, tokenStyle, token) {
+  board[position] = {
+    name: name,
+    tokenStyle: tokenStyle,
+    token, token,
     moves: [],
     wins: 0
   }
@@ -123,6 +129,19 @@ function checkForDraw() {
   }
 }
 
+function checkBoard() {
+  var winner = false;
+  winner = checkForWin(getWhosTurn());
+  checkForDraw();
+
+  if (winner) {
+    renderPlayerWins();
+    clearTokens();
+    clearPlayerMoves();
+    
+  }
+}
+
 // ----DOM-----
 
 function toggleAvailability() {
@@ -146,27 +165,18 @@ function renderToken(player, space) {
 function clearTokens() {
   for (var i = 0; i < tacBoxes.length; i++) {
     if (board.player1.moves.includes(tacBoxes[i].id)){
-      tacBoxes[i].classList.remove('player1')
+      tacBoxes[i].classList.remove(board.player1.token);
     } else {
-      tacBoxes[i].classList.remove('player2')
+      tacBoxes[i].classList.remove(board.player2.token)
     }
   }
 }
 
-function checkBoard() {
-  var winner = false;
-  winner = checkForWin(getWhosTurn());
-  checkForDraw();
-
-  if (winner) {
-    clearTokens();
-    clearPlayerMoves();
-    
-  }
-}
-
 function renderPlayerWins() {
-  
   player1Win.innerText = `Wins: ${board.player1.wins}`;
   player2Win.innerText = `Wins: ${board.player2.wins}`;
+}
+
+function renderPlayerTurn() {
+  turnMessage.innerText = `It's ${board[getWhosTurn()].token}'s turn!`
 }
