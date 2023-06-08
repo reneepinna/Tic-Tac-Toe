@@ -33,12 +33,12 @@ body {
 
 #player-1 {
   background-color: #fd9e02;
-  width: 25%;
+  width: 30%;
 }
 
 #player-2 {
   background-color: #87a330;
-  width: 25%;
+  width: 30%;
 }
 
 .circle {
@@ -52,6 +52,16 @@ body {
   background-color: #F1EACF;
 }
 
+#board-circle {
+  margin-top: 0px;
+  margin-bottom: 160px;
+  display: flex;
+  justify-content: center;
+  background-color: peachpuff;
+  height: 400px;
+  width: 400px;
+}
+
 h2 {
   font-size: xxx-large;
 }
@@ -61,7 +71,10 @@ h2 {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #F1EACF;
+  background-image: url(assets/Fruits-Background.webp);
+  background-size: 100%;
+  background-position-y: bottom;
+  overflow: hidden;
   height: 100%;
   width: 50%;
 }
@@ -77,15 +90,16 @@ h2 {
   column-gap: 2%;
   row-gap: 2%;
   background-color: #29524a;
-  height: 46%;
-  width: 50%;
+  height: 275px;
+  width: 275px;
+  align-self: center;
 }
 
 .tac-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #F1EACF;
+  background-color: peachpuff;
 }
 
 .orange::before {
@@ -96,4 +110,8 @@ h2 {
 .kiwi::before {
   content: '\1F95D';
   font-size: xxx-large;
+}
+
+.open {
+  cursor: pointer;
 }
