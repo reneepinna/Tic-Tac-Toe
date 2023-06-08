@@ -9,25 +9,30 @@ var turnMessage = document.getElementById('turn-message');
 // Global Variables
 
 var board = {
-  'player1': {
-    wins: 0,
-    tokenStyle: 'orange',
-    token: '🍊',
-    moves: [],
-    isTurn: true,
-  },
-  'player2': {
-    wins: 0,
-    tokenStyle: 'kiwi',
-    token: '🥝',
-    moves: [],
-    isTurn: false,
-  },
+  // 'player1': {
+  //   wins: 0,
+  //   tokenStyle: 'orange',
+  //   token: '🍊',
+  //   moves: [],
+  //   isTurn: true,
+  // },
+  // 'player2': {
+  //   wins: 0,
+  //   tokenStyle: 'kiwi',
+  //   token: '🥝',
+  //   moves: [],
+  //   isTurn: false,
+  // },
   allMoves: [],
 }
 
 
+
 // Event Listeners
+window.addEventListener('load', function(){
+  createPlayer("player1", "orange",'🍊', true);
+  createPlayer("player2", "kiwi", '🥝', false);
+})
 
 tacContainer.addEventListener('click', function(e) {
   if (e.target.className.includes('open')) {
@@ -47,13 +52,14 @@ tacContainer.addEventListener('click', function(e) {
 
 // Functions and Event Handlers
 
-function createPlayer(position, name, tokenStyle, token) {
+function createPlayer(position, tokenStyle, token, isTurn) {
   board[position] = {
-    name: name,
+   // name: name,
     tokenStyle: tokenStyle,
     token, token,
     moves: [],
-    wins: 0
+    wins: 0,
+    isTurn: isTurn
   }
 }
 
@@ -138,7 +144,7 @@ function checkBoard() {
     renderPlayerWins();
     clearTokens();
     clearPlayerMoves();
-    
+    toggleAvailability();
   }
 }
 
@@ -159,15 +165,15 @@ function getMoveSpace(e) {
 }
 
 function renderToken(player, space) {
-  tacBoxes[parseInt(space)].classList.add(board[player].token);
+  tacBoxes[parseInt(space)].classList.add(board[player].tokenStyle);
 }
 
 function clearTokens() {
   for (var i = 0; i < tacBoxes.length; i++) {
     if (board.player1.moves.includes(tacBoxes[i].id)){
-      tacBoxes[i].classList.remove(board.player1.token);
+      tacBoxes[i].classList.remove(board.player1.tokenStyle);
     } else {
-      tacBoxes[i].classList.remove(board.player2.token)
+      tacBoxes[i].classList.remove(board.player2.tokenStyle)
     }
   }
 }
