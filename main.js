@@ -27,10 +27,16 @@ tacContainer.addEventListener('click', function(e) {
     toggleAvailability();
     renderToken(getWhosTurn(), getMoveSpace(e));
 
-    checkBoard();
+    if(checkBoard()){
+      buyTime()
+    } else {
+      toggleTurn();
+      console.log('in else event listenr')
+      renderPlayerTurn();
+    }
 
-    toggleTurn();
-    renderPlayerTurn();
+    // toggleTurn();
+    // renderPlayerTurn();
 
   }
   //render 
@@ -74,6 +80,7 @@ function clearPlayerMoves() {
 function toggleTurn() {
   board.player1.isTurn = !board.player1.isTurn;
   board.player2.isTurn = !board.player1.isTurn;
+  console.log(getWhosTurn());
 
 }
 
@@ -122,16 +129,28 @@ function checkForDraw() {
 }
 
 function checkBoard() {
-  var winner = false;
-  winner = checkForWin(getWhosTurn());
+  var winner = checkForWin(getWhosTurn());
+
   if (winner) {
     renderGameEnd(getWhosTurn());
     renderPlayerWins();
-    resetBoard();
-    
+   // resetBoard();
+
+    return true;
   } else if (checkForDraw()) {
-    resetBoard();
+    renderDrawMessage();
+    return true;
   }
+}
+
+function prepareBoard() {
+  resetBoard();
+  toggleTurn();
+  renderPlayerTurn();}
+
+function buyTime(){
+  setTimeout(prepareBoard, 1500)
+  console.log('buytime')
 }
 
 function resetBoard() {
@@ -176,9 +195,13 @@ function renderPlayerWins() {
 }
 
 function renderPlayerTurn() {
-  turnMessage.innerText = `It's ${board[getWhosTurn()].token}'s turn!`
+  turnMessage.innerText = `It's ${board[getWhosTurn()].token}'s turn!`;
 }
 
-function renderGameEnd(player) {
-  turnMessage.innerText = `${board[player].token} Wins!`
+function renderWinMessage(player) {
+  turnMessage.innerText = `${board[player].token} Wins!`;
+}
+
+function renderDrawMessage() {
+  turnMessage.innerText = `It's a Draw!`;
 }
