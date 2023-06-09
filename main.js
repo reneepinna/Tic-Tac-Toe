@@ -12,10 +12,8 @@ var board = {
   allMoves: [],
 }
 
-
-
 // Event Listeners
-window.addEventListener('load', function(){
+window.addEventListener('load', function() {
   createPlayer("player1", "orange",'🍊', true);
   createPlayer("player2", "kiwi", '🥝', false);
 })
@@ -23,9 +21,9 @@ window.addEventListener('load', function(){
 tacContainer.addEventListener('click', function(e) {
   if (e.target.className.includes('open')) {
     acceptPlayerMove(e);
-    
-    if(checkBoardForEndCondition()){
-      buyTime()
+
+    if (checkBoardForEndCondition()) {
+      buyTime();
     } else {
       toggleTurn();
       renderPlayerTurn();
@@ -37,7 +35,6 @@ tacContainer.addEventListener('click', function(e) {
 
 function createPlayer(position, tokenStyle, token, isTurn) {
   board[position] = {
-   // name: name,
     tokenStyle: tokenStyle,
     token, token,
     moves: [],
@@ -71,11 +68,9 @@ function clearPlayerMoves() {
 function toggleTurn() {
   board.player1.isTurn = !board.player1.isTurn;
   board.player2.isTurn = !board.player1.isTurn;
-  console.log(getWhosTurn());
-
 }
 
-function updateAllMoves(space){
+function updateAllMoves(space) {
   board.allMoves.push(space);
 }
 
@@ -135,11 +130,11 @@ function checkBoardForEndCondition() {
 function prepareBoard() {
   resetBoard();
   toggleTurn();
-  renderPlayerTurn();}
+  renderPlayerTurn();
+}
 
-function buyTime(){
+function buyTime() {
   setTimeout(prepareBoard, 1500)
-  console.log('buytime')
 }
 
 function resetBoard() {
@@ -148,7 +143,7 @@ function resetBoard() {
   toggleAvailability();
 }
 
-function acceptPlayerMove(e){
+function acceptPlayerMove(e) {
   addPlayerMove(getWhosTurn(), getMoveSpace(e));
   updateAllMoves(getMoveSpace(e));
   toggleAvailability();
