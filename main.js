@@ -23,6 +23,7 @@ tacContainer.addEventListener('click', function(e) {
     acceptPlayerMove(e);
 
     if (checkBoardForEndCondition()) {
+      blockCellAvailability()
       setTimeout(prepareBoardForNewGame, 1000)
     } else {
       toggleTurn();
@@ -46,14 +47,14 @@ function createPlayer(position, tokenStyle, token, isTurn) {
 function acceptPlayerMove(e) {
   addPlayerMove(getWhosTurn(), getMoveSpace(e));
   updateAllMoves(getMoveSpace(e));
-  toggleAvailability();
+  toggleCellAvailability();
   renderToken(getWhosTurn(), getMoveSpace(e));
 }
 
 function prepareBoardForNewGame() {
   clearTokens();
   clearPlayerMoves();
-  toggleAvailability();
+  toggleCellAvailability();
   toggleTurn();
   renderPlayerTurn();
 }
@@ -137,7 +138,11 @@ function checkBoardForEndCondition() {
 
 // ----DOM-----
 
-function toggleAvailability() {
+function getMoveSpace(e) {
+  return e.target.id;
+}
+
+function toggleCellAvailability() {
   for (var i = 0; i < tacBoxes.length; i++) {
     if (board.allMoves.includes(tacBoxes[i].id)) {
       tacBoxes[i].classList.remove('open');
@@ -147,12 +152,10 @@ function toggleAvailability() {
   }
 }
 
-function getMoveSpace(e) {
-  return e.target.id;
-}
-
-function renderToken(player, space) {
-  tacBoxes[parseInt(space)].classList.add(board[player].tokenStyle);
+function blockCellAvailability() {
+  for (var i = 0; i < tacBoxes.length; i++) {
+    tacBoxes[i].classList.remove('open');
+  }
 }
 
 function clearTokens() {
@@ -163,6 +166,10 @@ function clearTokens() {
       tacBoxes[i].classList.remove(board.player2.tokenStyle)
     }
   }
+}
+
+function renderToken(player, space) {
+  tacBoxes[parseInt(space)].classList.add(board[player].tokenStyle);
 }
 
 function renderPlayerPastWins() {
