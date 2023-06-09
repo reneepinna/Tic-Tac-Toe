@@ -23,7 +23,7 @@ tacContainer.addEventListener('click', function(e) {
     acceptPlayerMove(e);
 
     if (checkBoardForEndCondition()) {
-      setTimeout(prepareBoardForNewGame, 1500)
+      setTimeout(prepareBoardForNewGame, 1000)
     } else {
       toggleTurn();
       renderPlayerTurn();
