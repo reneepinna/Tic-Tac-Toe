@@ -22,23 +22,15 @@ window.addEventListener('load', function(){
 
 tacContainer.addEventListener('click', function(e) {
   if (e.target.className.includes('open')) {
-    addPlayerMove(getWhosTurn(), getMoveSpace(e));
-    updateAllMoves(getMoveSpace(e));
-    toggleAvailability();
-    renderToken(getWhosTurn(), getMoveSpace(e));
-
-    if(checkBoard()){
+    acceptPlayerMove(e);
+    
+    if(checkBoardForEndCondition()){
       buyTime()
     } else {
       toggleTurn();
       renderPlayerTurn();
     }
-
-    // toggleTurn();
-    // renderPlayerTurn();
-
   }
-  //render 
 })
 
 // Functions and Event Handlers
@@ -127,14 +119,12 @@ function checkForDraw() {
   }
 }
 
-function checkBoard() {
+function checkBoardForEndCondition() {
   var winner = checkForWin(getWhosTurn());
 
   if (winner) {
     renderWinMessage(getWhosTurn());
     renderPlayerWins();
-   // resetBoard();
-
     return true;
   } else if (checkForDraw()) {
     renderDrawMessage();
@@ -156,6 +146,13 @@ function resetBoard() {
   clearTokens();
   clearPlayerMoves();
   toggleAvailability();
+}
+
+function acceptPlayerMove(e){
+  addPlayerMove(getWhosTurn(), getMoveSpace(e));
+  updateAllMoves(getMoveSpace(e));
+  toggleAvailability();
+  renderToken(getWhosTurn(), getMoveSpace(e));
 }
 
 // ----DOM-----
