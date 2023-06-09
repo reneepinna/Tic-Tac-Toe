@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="uft-8">
   <title>Tic-Tac-Toe</title>
   <link href="styles.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,24 +10,32 @@
 </head>
 <body>
   <section class="player-bar" id="player-1">
-    <h2>Player 1</h2>
+    <span class="circle">
+      <h2>&#127818;</h2>
+      <h3 id="player1-wins">Wins: 0</h3>
+    </span>
   </section>
   <section class="main">
-    <h2 id="turn-message">Player Turn</h2>
-    <section id="tac-container">
-      <article class="tac-box open" id="0"></article>
-      <article class="tac-box open" id="1"></article>
-      <article class="tac-box open" id="2"></article>
-      <article class="tac-box open" id="3"></article>
-      <article class="tac-box open" id="4"></article>
-      <article class="tac-box open" id="5"></article>
-      <article class="tac-box open" id="6"></article>
-      <article class="tac-box open" id="7"></article>
-      <article class="tac-box open" id="8"></article>
-    </section>
+    <h1 id="turn-message">It's 🍊's turn!</h1>
+    <span class="circle" id="board-circle">
+      <section id="tac-container">
+        <article class="tac-box open" id="0"></article>
+        <article class="tac-box open" id="1"></article>
+        <article class="tac-box open" id="2"></article>
+        <article class="tac-box open" id="3"></article>
+        <article class="tac-box open" id="4"></article>
+        <article class="tac-box open" id="5"></article>
+        <article class="tac-box open" id="6"></article>
+        <article class="tac-box open" id="7"></article>
+        <article class="tac-box open" id="8"></article>
+      </section>
+    </span>
   </section>
   <section class="player-bar" id="player-2">
-    <h2>Player 2</h2>
+    <span class="circle">
+      <h2>&#129373;</h2>
+      <h3 id="player2-wins">Wins: 0</h3>
+    </span>
   </section>
   <script type="text/javascript" src="main.js"></script>
 </body>
