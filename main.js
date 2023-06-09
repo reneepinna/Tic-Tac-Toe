@@ -127,7 +127,7 @@ function checkBoardForEndCondition() {
   if (winner) {
     increaseWins(getWhosTurn());
     renderWinMessage(getWhosTurn());
-    renderPlayerWins();
+    renderPlayerPastWins();
     return true;
   } else if (checkForDraw()) {
     renderDrawMessage();
@@ -165,7 +165,7 @@ function clearTokens() {
   }
 }
 
-function renderPlayerWins() {
+function renderPlayerPastWins() {
   player1Win.innerText = `Wins: ${board.player1.wins}`;
   player2Win.innerText = `Wins: ${board.player2.wins}`;
 }
