@@ -23,7 +23,7 @@ tacContainer.addEventListener('click', function(e) {
     acceptPlayerMove(e);
 
     if (checkBoardForEndCondition()) {
-      buyTime();
+      setTimeout(prepareBoard, 1500)
     } else {
       toggleTurn();
       renderPlayerTurn();
@@ -131,10 +131,6 @@ function prepareBoard() {
   resetBoard();
   toggleTurn();
   renderPlayerTurn();
-}
-
-function buyTime() {
-  setTimeout(prepareBoard, 1500)
 }
 
 function resetBoard() {
