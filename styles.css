@@ -32,14 +32,6 @@ body {
   width: 30%;
 }
 
-#player-1 {
-  background-color: #fd9e02;
-}
-
-#player-2 {
-  background-color: #87a330;
-}
-
 .board-circle,
 .circle {
   display: flex;
@@ -58,10 +50,6 @@ body {
   height: 400px;
   width: 400px;
   background-color: rgb(255,182,175);
-}
-
-h2 {
-  font-size: xxx-large;
 }
 
 .main {
@@ -96,14 +84,16 @@ h2 {
   background-color: rgb(255,182,175);
 }
 
-.orange::before {
-  content: '\1F34A';
+h2 {
   font-size: xxx-large;
 }
 
-.kiwi::before {
-  content: '\1F95D';
-  font-size: xxx-large;
+.orange{
+  background-color: #fd9e02;
+}
+
+.kiwi {
+  background-color: #87a330;
 }
 
 .open {
