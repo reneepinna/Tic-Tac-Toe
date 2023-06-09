@@ -31,7 +31,6 @@ tacContainer.addEventListener('click', function(e) {
       buyTime()
     } else {
       toggleTurn();
-      console.log('in else event listenr')
       renderPlayerTurn();
     }
 
@@ -132,7 +131,7 @@ function checkBoard() {
   var winner = checkForWin(getWhosTurn());
 
   if (winner) {
-    renderGameEnd(getWhosTurn());
+    renderWinMessage(getWhosTurn());
     renderPlayerWins();
    // resetBoard();
 
