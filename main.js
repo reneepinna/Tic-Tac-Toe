@@ -1,6 +1,6 @@
 // Query Selectors
-var tacContainer = document.getElementById('tac-container');
-var tacBoxes = document.querySelectorAll('.tac-box');
+var tacContainer = document.getElementById('cell-container');
+var boardCells = document.querySelectorAll('.board-cell');
 
 var player1Win = document.getElementById('player1-wins');
 var player2Win = document.getElementById('player2-wins');
@@ -143,33 +143,33 @@ function getMoveSpace(e) {
 }
 
 function toggleCellAvailability() {
-  for (var i = 0; i < tacBoxes.length; i++) {
-    if (board.allMoves.includes(tacBoxes[i].id)) {
-      tacBoxes[i].classList.remove('open');
+  for (var i = 0; i < boardCells.length; i++) {
+    if (board.allMoves.includes(boardCells[i].id)) {
+      boardCells[i].classList.remove('open');
     } else {
-      tacBoxes[i].classList.add('open');
+      boardCells[i].classList.add('open');
     }
   }
 }
 
 function blockCellAvailability() {
-  for (var i = 0; i < tacBoxes.length; i++) {
-    tacBoxes[i].classList.remove('open');
+  for (var i = 0; i < boardCells.length; i++) {
+    boardCells[i].classList.remove('open');
   }
 }
 
 function clearTokens() {
-  for (var i = 0; i < tacBoxes.length; i++) {
-    if (board.player1.moves.includes(tacBoxes[i].id)){
-      tacBoxes[i].classList.remove(board.player1.tokenStyle);
+  for (var i = 0; i < boardCells.length; i++) {
+    if (board.player1.moves.includes(boardCells[i].id)){
+      boardCells[i].classList.remove(board.player1.tokenStyle);
     } else {
-      tacBoxes[i].classList.remove(board.player2.tokenStyle)
+      boardCells[i].classList.remove(board.player2.tokenStyle)
     }
   }
 }
 
 function renderToken(player, space) {
-  tacBoxes[parseInt(space)].classList.add(board[player].tokenStyle);
+  boardCells[parseInt(space)].classList.add(board[player].tokenStyle);
 }
 
 function renderPlayerPastWins() {
