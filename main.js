@@ -88,7 +88,7 @@ function checkForWin(player) {
   ]
   
   for (var i = 0; i < winConditions.length; i++) {
-    if (evaluateWinCondition(player, winConditions[i])) {
+    if (winConditions[i].every(evaluateWinCondition)) {
       increaseWins(player);
       return true;
     }
@@ -97,15 +97,10 @@ function checkForWin(player) {
   return false;
 }
 
-function evaluateWinCondition(player, winCondition) {
-  var tally = 0;
-  for (var i = 0; i < winCondition.length; i++) {
-    if (board[player].moves.includes(winCondition[i])) tally++;
-  }
-
-  if (tally === 3) {
-    return true;
-  }
+function evaluateWinCondition(currentValue) {
+ if(board[getWhosTurn()].moves.includes(currentValue)){
+  return true;
+ }
 }
 
 function checkForDraw() {
