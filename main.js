@@ -23,7 +23,7 @@ tacContainer.addEventListener('click', function(e) {
     acceptPlayerMove(e);
 
     if (checkBoardForEndCondition()) {
-      setTimeout(prepareBoard, 1500)
+      setTimeout(prepareBoardForNewGame, 1500)
     } else {
       toggleTurn();
       renderPlayerTurn();
@@ -41,6 +41,21 @@ function createPlayer(position, tokenStyle, token, isTurn) {
     wins: 0,
     isTurn: isTurn
   }
+}
+
+function acceptPlayerMove(e) {
+  addPlayerMove(getWhosTurn(), getMoveSpace(e));
+  updateAllMoves(getMoveSpace(e));
+  toggleAvailability();
+  renderToken(getWhosTurn(), getMoveSpace(e));
+}
+
+function prepareBoardForNewGame() {
+  clearTokens();
+  clearPlayerMoves();
+  toggleAvailability();
+  toggleTurn();
+  renderPlayerTurn();
 }
 
 function getWhosTurn() {
@@ -89,12 +104,9 @@ function checkForWin(player) {
   
   for (var i = 0; i < winConditions.length; i++) {
     if (winConditions[i].every(evaluateWinCondition)) {
-      increaseWins(player);
       return true;
     }
   }
-
-  return false;
 }
 
 function evaluateWinCondition(currentValue) {
@@ -113,6 +125,7 @@ function checkBoardForEndCondition() {
   var winner = checkForWin(getWhosTurn());
 
   if (winner) {
+    increaseWins(getWhosTurn());
     renderWinMessage(getWhosTurn());
     renderPlayerWins();
     return true;
@@ -120,25 +133,6 @@ function checkBoardForEndCondition() {
     renderDrawMessage();
     return true;
   }
-}
-
-function prepareBoard() {
-  resetBoard();
-  toggleTurn();
-  renderPlayerTurn();
-}
-
-function resetBoard() {
-  clearTokens();
-  clearPlayerMoves();
-  toggleAvailability();
-}
-
-function acceptPlayerMove(e) {
-  addPlayerMove(getWhosTurn(), getMoveSpace(e));
-  updateAllMoves(getMoveSpace(e));
-  toggleAvailability();
-  renderToken(getWhosTurn(), getMoveSpace(e));
 }
 
 // ----DOM-----
