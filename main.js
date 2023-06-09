@@ -1,6 +1,6 @@
 // Query Selectors
-var tacContainer = document.getElementById('tac-container');
-var tacBoxes = document.querySelectorAll('.tac-box');
+var tacContainer = document.getElementById('cell-container');
+var boardCells = document.querySelectorAll('.board-cell');
 
 var player1Win = document.getElementById('player1-wins');
 var player2Win = document.getElementById('player2-wins');
@@ -12,46 +12,51 @@ var board = {
   allMoves: [],
 }
 
-
-
 // Event Listeners
-window.addEventListener('load', function(){
+window.addEventListener('load', function() {
   createPlayer("player1", "orange",'🍊', true);
   createPlayer("player2", "kiwi", '🥝', false);
 })
 
 tacContainer.addEventListener('click', function(e) {
   if (e.target.className.includes('open')) {
-    addPlayerMove(getWhosTurn(), getMoveSpace(e));
-    updateAllMoves(getMoveSpace(e));
-    toggleAvailability();
-    renderToken(getWhosTurn(), getMoveSpace(e));
+    acceptPlayerMove(e);
 
-    if(checkBoard()){
-      buyTime()
+    if (checkBoardForEndCondition()) {
+      blockCellAvailability()
+      setTimeout(prepareBoardForNewGame, 1000)
     } else {
       toggleTurn();
       renderPlayerTurn();
     }
-
-    // toggleTurn();
-    // renderPlayerTurn();
-
   }
-  //render 
 })
 
 // Functions and Event Handlers
 
 function createPlayer(position, tokenStyle, token, isTurn) {
   board[position] = {
-   // name: name,
     tokenStyle: tokenStyle,
     token, token,
     moves: [],
     wins: 0,
     isTurn: isTurn
   }
+}
+
+function acceptPlayerMove(e) {
+  addPlayerMove(getWhosTurn(), getMoveSpace(e));
+  updateAllMoves(getMoveSpace(e));
+  toggleCellAvailability();
+  renderToken(getWhosTurn(), getMoveSpace(e));
+}
+
+function prepareBoardForNewGame() {
+  clearTokens();
+  clearPlayerMoves();
+  toggleCellAvailability();
+  toggleTurn();
+  renderPlayerTurn();
 }
 
 function getWhosTurn() {
@@ -79,11 +84,9 @@ function clearPlayerMoves() {
 function toggleTurn() {
   board.player1.isTurn = !board.player1.isTurn;
   board.player2.isTurn = !board.player1.isTurn;
-  console.log(getWhosTurn());
-
 }
 
-function updateAllMoves(space){
+function updateAllMoves(space) {
   board.allMoves.push(space);
 }
 
@@ -101,24 +104,16 @@ function checkForWin(player) {
   ]
   
   for (var i = 0; i < winConditions.length; i++) {
-    if (evaluateWinCondition(player, winConditions[i])) {
-      increaseWins(player);
+    if (winConditions[i].every(evaluateWinCondition)) {
       return true;
     }
   }
-
-  return false;
 }
 
-function evaluateWinCondition(player, winCondition) {
-  var tally = 0;
-  for (var i = 0; i < winCondition.length; i++) {
-    if (board[player].moves.includes(winCondition[i])) tally++;
-  }
-
-  if (tally === 3) {
-    return true;
-  }
+function evaluateWinCondition(currentValue) {
+ if(board[getWhosTurn()].moves.includes(currentValue)){
+  return true;
+ }
 }
 
 function checkForDraw() {
@@ -127,14 +122,13 @@ function checkForDraw() {
   }
 }
 
-function checkBoard() {
+function checkBoardForEndCondition() {
   var winner = checkForWin(getWhosTurn());
 
   if (winner) {
+    increaseWins(getWhosTurn());
     renderWinMessage(getWhosTurn());
-    renderPlayerWins();
-   // resetBoard();
-
+    renderPlayerPastWins();
     return true;
   } else if (checkForDraw()) {
     renderDrawMessage();
@@ -142,53 +136,43 @@ function checkBoard() {
   }
 }
 
-function prepareBoard() {
-  resetBoard();
-  toggleTurn();
-  renderPlayerTurn();}
-
-function buyTime(){
-  setTimeout(prepareBoard, 1500)
-  console.log('buytime')
-}
-
-function resetBoard() {
-  clearTokens();
-  clearPlayerMoves();
-  toggleAvailability();
-}
-
 // ----DOM-----
-
-function toggleAvailability() {
-  for (var i = 0; i < tacBoxes.length; i++) {
-    if (board.allMoves.includes(tacBoxes[i].id)) {
-      tacBoxes[i].classList.remove('open');
-    } else {
-      tacBoxes[i].classList.add('open');
-    }
-  }
-}
 
 function getMoveSpace(e) {
   return e.target.id;
 }
 
-function renderToken(player, space) {
-  tacBoxes[parseInt(space)].classList.add(board[player].tokenStyle);
-}
-
-function clearTokens() {
-  for (var i = 0; i < tacBoxes.length; i++) {
-    if (board.player1.moves.includes(tacBoxes[i].id)){
-      tacBoxes[i].classList.remove(board.player1.tokenStyle);
+function toggleCellAvailability() {
+  for (var i = 0; i < boardCells.length; i++) {
+    if (board.allMoves.includes(boardCells[i].id)) {
+      boardCells[i].classList.remove('open');
     } else {
-      tacBoxes[i].classList.remove(board.player2.tokenStyle)
+      boardCells[i].classList.add('open');
     }
   }
 }
 
-function renderPlayerWins() {
+function blockCellAvailability() {
+  for (var i = 0; i < boardCells.length; i++) {
+    boardCells[i].classList.remove('open');
+  }
+}
+
+function clearTokens() {
+  for (var i = 0; i < boardCells.length; i++) {
+    if (board.player1.moves.includes(boardCells[i].id)){
+      boardCells[i].classList.remove(board.player1.tokenStyle);
+    } else {
+      boardCells[i].classList.remove(board.player2.tokenStyle)
+    }
+  }
+}
+
+function renderToken(player, space) {
+  boardCells[parseInt(space)].classList.add(board[player].tokenStyle);
+}
+
+function renderPlayerPastWins() {
   player1Win.innerText = `Wins: ${board.player1.wins}`;
   player2Win.innerText = `Wins: ${board.player2.wins}`;
 }

@@ -29,18 +29,18 @@ body {
   flex-direction: column;
   align-items: center;
   height: 100%;
+  width: 30%;
 }
 
 #player-1 {
   background-color: #fd9e02;
-  width: 30%;
 }
 
 #player-2 {
   background-color: #87a330;
-  width: 30%;
 }
 
+.board-circle,
 .circle {
   display: flex;
   flex-direction: column;
@@ -52,14 +52,12 @@ body {
   background-color: #F1EACF;
 }
 
-#board-circle {
+.board-circle {
   margin-top: 0px;
   margin-bottom: 160px;
-  display: flex;
-  justify-content: center;
-  background-color: peachpuff;
   height: 400px;
   width: 400px;
+  background-color: rgb(255,182,175);
 }
 
 h2 {
@@ -76,30 +74,26 @@ h2 {
   background-position-y: bottom;
   overflow: hidden;
   height: 100%;
-  width: 50%;
+  width: 40%;
 }
 
-h2 {
-  color: #29524a;
-}
-
-#tac-container {
+#cell-container {
   display: grid;
   grid-template-columns: 32% 32% 32%;
   grid-template-rows: 32% 32% 32%;
   column-gap: 2%;
   row-gap: 2%;
-  background-color: #29524a;
+  background-color: rgb(0,125,117);
   height: 275px;
   width: 275px;
   align-self: center;
 }
 
-.tac-box {
+.board-cell {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: peachpuff;
+  background-color: rgb(255,182,175);
 }
 
 .orange::before {
