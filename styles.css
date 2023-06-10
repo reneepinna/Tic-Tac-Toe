@@ -49,7 +49,9 @@ body {
   margin-bottom: 160px;
   height: 400px;
   width: 400px;
-  background-color: rgb(255,182,175);
+  /* background-color: rgb(255,182,175); */
+  /* background-color:#929AC4; */
+  background-color: #7bbb99;
 }
 
 .main {
@@ -72,6 +74,7 @@ body {
   column-gap: 2%;
   row-gap: 2%;
   background-color: rgb(0,125,117);
+  /* background-color: #9dbc5f ; */
   height: 275px;
   width: 275px;
   align-self: center;
@@ -81,21 +84,30 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255,182,175);
+  /* background-color: rgb(255,182,175); */
+  /* background-color: #929AC4; */
+  background-color: #7bbb99;
 }
 
-h2 {
+h2,
+.token {
   font-size: xxx-large;
 }
 
 .orange{
-  background-color: #fd9e02;
+  /* background-color: #fd9e02; */
+  background-color: #ff862b ;
 }
 
 .kiwi {
-  background-color: #87a330;
+  /* background-color: #87a330; */
+  background-color: #9dbc5f ;
 }
 
 .open {
   cursor: pointer;
+}
+
+.peach {
+  background-color: rgb(255,182,175);
 }

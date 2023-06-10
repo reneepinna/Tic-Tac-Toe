@@ -2,6 +2,8 @@
 var tacContainer = document.getElementById('cell-container');
 var boardCells = document.querySelectorAll('.board-cell');
 
+var player1IMG = document.getElementById('player1-IMG');
+var player2IMG = document.getElementById('player2-IMG');
 var player1Win = document.getElementById('player1-wins');
 var player2Win = document.getElementById('player2-wins');
 
@@ -14,8 +16,10 @@ var board = {
 
 // Event Listeners
 window.addEventListener('load', function() {
-  createPlayer("player1", "orange",'🍊', true);
+  createPlayer("player1", "peach",'🍑', true);
   createPlayer("player2", "kiwi", '🥝', false);
+
+  initializePlayerHeader();
 })
 
 tacContainer.addEventListener('click', function(e) {
@@ -165,7 +169,7 @@ function clearTokens() {
 }
 
 function renderToken(player, space) {
-  boardCells[parseInt(space)].innerHTML = `<span role="img" aria-label="${board[player].tokenStyle}" title="${board[player].tokenStyle}">${board[player].token}</span>`
+  boardCells[parseInt(space)].innerHTML = `<span class="token" role="img" aria-label="${board[player].tokenStyle}" title="${board[player].tokenStyle}">${board[player].token}</span>`
 }
 
 function renderPlayerPastWins() {
@@ -183,4 +187,9 @@ function renderWinMessage(player) {
 
 function renderDrawMessage() {
   turnMessage.innerText = `It's a Draw!`;
+}
+
+function initializePlayerHeader() {
+  player1IMG.innerHTML = board.player1.token;
+  player2IMG.innerHTML = board.player2.token;
 }
