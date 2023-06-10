@@ -102,17 +102,26 @@ h2,
   cursor: pointer;
 }
 
-.orange{
-  /* background-color: #fd9e02; */
+.peach {
+  background-color: #ffb6af;
+}
+
+.strawberry {
+  background-color: #eb685a ;
+}
+
+.orange {
   background-color: #ff862b ;
 }
 
+.lemon {
+  background-color: #f4d333 ;
+}
+
 .kiwi {
-  /* background-color: #87a330; */
   background-color: #9dbc5f ;
 }
 
-
-.peach {
-  background-color: rgb(255,182,175);
+.blueberry {
+  background-color: #6671ac ;
 }
