@@ -160,16 +160,12 @@ function blockCellAvailability() {
 
 function clearTokens() {
   for (var i = 0; i < boardCells.length; i++) {
-    if (board.player1.moves.includes(boardCells[i].id)){
-      boardCells[i].classList.remove(board.player1.tokenStyle);
-    } else {
-      boardCells[i].classList.remove(board.player2.tokenStyle)
-    }
+      boardCells[i].innerHTML = '';
   }
 }
 
 function renderToken(player, space) {
-  boardCells[parseInt(space)].classList.add(board[player].tokenStyle);
+  boardCells[parseInt(space)].innerHTML = `<span role="img" aria-label="${board[player].tokenStyle}" title="${board[player].tokenStyle}">${board[player].token}</span>`
 }
 
 function renderPlayerPastWins() {
