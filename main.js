@@ -197,4 +197,6 @@ function initializePlayerTheme() {
 
   player1Bar.classList.add(board.player1.tokenStyle);
   player2Bar.classList.add(board.player2.tokenStyle);
+
+  turnMessage.innerText = `It's ${board.player1.token}'s turn!`;
 }
