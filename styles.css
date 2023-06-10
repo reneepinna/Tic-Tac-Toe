@@ -54,6 +54,10 @@ body {
   background-color: #7bbb99;
 }
 
+#turn-message {
+  font-size: xx-large;
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -94,6 +98,10 @@ h2,
   font-size: xxx-large;
 }
 
+.open {
+  cursor: pointer;
+}
+
 .orange{
   /* background-color: #fd9e02; */
   background-color: #ff862b ;
@@ -104,9 +112,6 @@ h2,
   background-color: #9dbc5f ;
 }
 
-.open {
-  cursor: pointer;
-}
 
 .peach {
   background-color: rgb(255,182,175);
