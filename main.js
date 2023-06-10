@@ -6,6 +6,8 @@ var player1IMG = document.getElementById('player1-IMG');
 var player2IMG = document.getElementById('player2-IMG');
 var player1Win = document.getElementById('player1-wins');
 var player2Win = document.getElementById('player2-wins');
+var player1Bar = document.getElementById('player-1');
+var player2Bar = document.getElementById('player-2');
 
 var turnMessage = document.getElementById('turn-message');
 // Global Variables
@@ -16,10 +18,10 @@ var board = {
 
 // Event Listeners
 window.addEventListener('load', function() {
-  createPlayer("player1", "peach",'🍑', true);
-  createPlayer("player2", "kiwi", '🥝', false);
+  createPlayer("player1", "blueberry",'🫐', true);
+  createPlayer("player2", "strawberry", '🍓', false);
 
-  initializePlayerHeader();
+  initializePlayerTheme();
 })
 
 tacContainer.addEventListener('click', function(e) {
@@ -189,7 +191,10 @@ function renderDrawMessage() {
   turnMessage.innerText = `It's a Draw!`;
 }
 
-function initializePlayerHeader() {
+function initializePlayerTheme() {
   player1IMG.innerHTML = board.player1.token;
   player2IMG.innerHTML = board.player2.token;
+
+  player1Bar.classList.add(board.player1.tokenStyle);
+  player2Bar.classList.add(board.player2.tokenStyle);
 }
