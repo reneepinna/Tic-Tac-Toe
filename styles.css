@@ -20,9 +20,7 @@ body {
   height: 100%;
 }
 
-.hidden {
-  display: none;
-}
+
 
 body {
   display: flex;
@@ -50,10 +48,18 @@ body {
 .choice-container {
   display: flex;
   justify-content: space-evenly;
+
 }
 
-.token-choice {
-  cursor: pointer;
+button {
+  background-color:#7bbb99;
+  align-self: center;
+  /* color:#F1EACF; */
+  border: 0;
+  border-radius: 50px;
+  font-size: large;
+  height: 30px;
+  width: 110px;
 }
 
 .board-circle,
@@ -76,7 +82,7 @@ body {
   background-color: #7bbb99;
 }
 
-#turn-message {
+.message {
   font-size: xx-large;
 }
 
@@ -122,6 +128,10 @@ h3,
   cursor: pointer;
 }
 
+.start {
+  background-color: #7bbb99;
+}
+
 .peach {
   background-color: #ffb6af;
 }
@@ -144,4 +154,8 @@ h3,
 
 .blueberry {
   background-color: #6671ac ;
+}
+
+.hidden {
+  display: none;
 }
