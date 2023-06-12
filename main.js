@@ -8,8 +8,12 @@ var player1Win = document.getElementById('player1-wins');
 var player2Win = document.getElementById('player2-wins');
 var player1Bar = document.getElementById('player-1');
 var player2Bar = document.getElementById('player-2');
+var player1Choice = document.getElementById('player1-choice');
+var player2Choice = document.getElementById('player2-choice');
+var buttons = document.querySelectorAll('.ready');
 
 var turnMessage = document.getElementById('turn-message');
+var chooseMessage = document.getElementById('choose-message');
 // Global Variables
 
 var board = {
@@ -18,10 +22,32 @@ var board = {
 
 // Event Listeners
 window.addEventListener('load', function() {
-  createPlayer("player1", "blueberry",'🫐', true);
-  createPlayer("player2", "strawberry", '🍓', false);
+  createPlayer("player1", "start",'', true);
+  createPlayer("player2", "start", '', false);
 
   initializePlayerTheme();
+})
+
+player1Choice.addEventListener('click', function(e){
+  chooseToken(e, 0, "player1")
+})
+
+player2Choice.addEventListener('click', function(e) {
+  chooseToken(e, 1, "player2")
+})
+
+buttons[0].addEventListener('click', function(){
+  initializePlayerTheme();
+  player1Choice.classList.add('hidden');
+  player2Choice.classList.remove('hidden');
+})
+
+buttons[1].addEventListener('click', function(){
+  initializePlayerTheme();
+  player2Choice.classList.add('hidden');
+  chooseMessage.classList.add('hidden');
+  turnMessage.classList.remove('hidden');
+  toggleCellAvailability();
 })
 
 tacContainer.addEventListener('click', function(e) {
@@ -199,4 +225,14 @@ function initializePlayerTheme() {
   player2Bar.classList.add(board.player2.tokenStyle);
 
   turnMessage.innerText = `It's ${board.player1.token}'s turn!`;
+}
+
+function chooseToken(e, i, player) {
+  if(e.target.className.includes('token-choice open')) {
+    board[player].token = e.target.innerText;
+    board[player].tokenStyle = e.target.title;
+
+    buttons[i].classList.add(e.target.title);
+    buttons[i].classList.add('open');
+  }
 }
