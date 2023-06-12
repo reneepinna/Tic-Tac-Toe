@@ -232,7 +232,7 @@ function chooseToken(e, i, player) {
     board[player].token = e.target.innerText;
     board[player].tokenStyle = e.target.title;
 
-    buttons[i].classList.add(e.target.title);
+    buttons[i].classList.add('selectable');
     buttons[i].classList.add('open');
   }
 }

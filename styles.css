@@ -156,6 +156,11 @@ h3,
   background-color: #6671ac ;
 }
 
+.selectable {
+  background-color:rgb(0,125,117);
+  color: #F1EACF;
+}
+
 .hidden {
   display: none;
 }
