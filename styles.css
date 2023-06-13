@@ -41,7 +41,7 @@ body {
   margin-top: 100px;
   border-radius: 20px;
   height: 200px;
-  width: 450px;
+  width: 350px;
   background-color: #F1EACF;
 }
 
@@ -119,9 +119,16 @@ button {
 }
 
 h3,
-.token-choice,
 .token {
   font-size: xxx-large;
+}
+
+h4 {
+  font-size: xx-large;
+}
+
+.token-choice {
+  font-size: 40px;
 }
 
 .open {
