@@ -16,6 +16,7 @@ To clone down this repository to your local machine:
 
 ### Preview of App
 
+![Tic-Tac-Toe DEMO](https://github.com/reneepinna/Tic-Tac-Toe/assets/130389530/3f1166e4-ed7d-41a5-8f80-bbe8996468d8)
 
 ### Context
 
