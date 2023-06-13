@@ -2,10 +2,21 @@
 var tacContainer = document.getElementById('cell-container');
 var boardCells = document.querySelectorAll('.board-cell');
 
+var player1IMG = document.getElementById('player1-IMG');
+var player2IMG = document.getElementById('player2-IMG');
 var player1Win = document.getElementById('player1-wins');
 var player2Win = document.getElementById('player2-wins');
+var player1Bar = document.getElementById('player-1');
+var player2Bar = document.getElementById('player-2');
+var player1Choice = document.getElementById('player1-choice');
+var player2Choice = document.getElementById('player2-choice');
+var buttons = document.querySelectorAll('.ready');
+
+var tokenOptions = document.querySelectorAll('.token-choice');
 
 var turnMessage = document.getElementById('turn-message');
+var chooseMessage = document.getElementById('choose-message');
+
 // Global Variables
 
 var board = {
@@ -13,9 +24,40 @@ var board = {
 }
 
 // Event Listeners
+
 window.addEventListener('load', function() {
-  createPlayer("player1", "orange",'🍊', true);
-  createPlayer("player2", "kiwi", '🥝', false);
+  createPlayer("player1", "start",'', true);
+  createPlayer("player2", "start", '', false);
+
+  initializePlayerTheme();
+})
+
+player1Choice.addEventListener('click', function(e){
+  chooseToken(e, 0, "player1")
+  limitTokenChoice()
+})
+
+player2Choice.addEventListener('click', function(e) {
+  if(!e.target.className.includes('off-limits')) {
+    chooseToken(e, 1, "player2");
+    limitTokenChoice()
+  }
+})
+
+buttons[0].addEventListener('click', function(e){
+  if (e.target.className.includes('selectable')) {
+    initializePlayerTheme();
+    player1Choice.classList.add('hidden');
+    player2Choice.classList.remove('hidden');
+  }
+})
+
+buttons[1].addEventListener('click', function(){
+  initializePlayerTheme();
+  player2Choice.classList.add('hidden');
+  chooseMessage.classList.add('hidden');
+  turnMessage.classList.remove('hidden');
+  toggleCellAvailability();
 })
 
 tacContainer.addEventListener('click', function(e) {
@@ -160,16 +202,12 @@ function blockCellAvailability() {
 
 function clearTokens() {
   for (var i = 0; i < boardCells.length; i++) {
-    if (board.player1.moves.includes(boardCells[i].id)){
-      boardCells[i].classList.remove(board.player1.tokenStyle);
-    } else {
-      boardCells[i].classList.remove(board.player2.tokenStyle)
-    }
+      boardCells[i].innerHTML = '';
   }
 }
 
 function renderToken(player, space) {
-  boardCells[parseInt(space)].classList.add(board[player].tokenStyle);
+  boardCells[parseInt(space)].innerHTML = `<span class="token" role="img" aria-label="${board[player].tokenStyle}" title="${board[player].tokenStyle}">${board[player].token}</span>`
 }
 
 function renderPlayerPastWins() {
@@ -187,4 +225,33 @@ function renderWinMessage(player) {
 
 function renderDrawMessage() {
   turnMessage.innerText = `It's a Draw!`;
+}
+
+function initializePlayerTheme() {
+  player1IMG.innerHTML = board.player1.token;
+  player2IMG.innerHTML = board.player2.token;
+
+  player1Bar.classList.add(board.player1.tokenStyle);
+  player2Bar.classList.add(board.player2.tokenStyle);
+
+  turnMessage.innerText = `It's ${board.player1.token}'s turn!`;
+}
+
+function chooseToken(e, i, player) {
+  if(e.target.className.includes('token-choice open')) {
+    board[player].token = e.target.innerText;
+    board[player].tokenStyle = e.target.title;
+
+    buttons[i].classList.add('selectable');
+  }
+}
+
+function limitTokenChoice () {
+  for (var i = 0; i < tokenOptions.length; i++) {
+    if (board.player1.tokenStyle === tokenOptions[i].title || board.player2.tokenStyle === tokenOptions[i].title){
+      tokenOptions[i].classList.add('off-limits');
+    } else {
+      tokenOptions[i].classList.remove('off-limits');
+    }
+  }
 }

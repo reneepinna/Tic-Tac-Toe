@@ -6,36 +6,61 @@
   <link href="styles.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Moirai+One&display=swap" rel="stylesheet">
 </head>
 <body>
   <section class="player-bar" id="player-1">
     <span class="circle">
-      <h2>&#127818;</h2>
-      <h3 id="player1-wins">Wins: 0</h3>
+      <h3 id="player1-IMG"></h3>
+      <h4 id="player1-wins">Wins: 0</h4>
     </span>
+    <section class="token-picker" id="player1-choice">
+      <h2>Player 1 - Choose your token!</h2>
+      <div class="choice-container">
+        <span class="token-choice open" role="img" aria-label="peach" title="peach">🍑</span>
+        <span class="token-choice open" role="img" aria-label="strawberry" title="strawberry">🍓</span>
+        <span class="token-choice open" role="img" aria-label="orange" title="orange">🍊</span>
+        <span class="token-choice open" role="img" aria-label="lemon" title="lemon">🍋</span>
+        <span class="token-choice open" role="img" aria-label="kiwi" title="kiwi">🥝</span>
+        <span class="token-choice open" role="img" aria-label="blueberry" title="blueberry">🫐</span>
+      </div>
+      <button class="ready">I'm Ready</button>
+    </section>
   </section>
   <section class="main">
-    <h1 id="turn-message">It's 🍊's turn!</h1>
+    <h1 class="message" id="choose-message">Choose Your Token!</h1>
+    <h1 class="message hidden" id="turn-message"></h1>
     <span class="board-circle">
       <section id="cell-container">
-        <article class="board-cell open" id="0"></article>
-        <article class="board-cell open" id="1"></article>
-        <article class="board-cell open" id="2"></article>
-        <article class="board-cell open" id="3"></article>
-        <article class="board-cell open" id="4"></article>
-        <article class="board-cell open" id="5"></article>
-        <article class="board-cell open" id="6"></article>
-        <article class="board-cell open" id="7"></article>
-        <article class="board-cell open" id="8"></article>
+        <article class="board-cell" id="0"></article>
+        <article class="board-cell" id="1"></article>
+        <article class="board-cell" id="2"></article>
+        <article class="board-cell" id="3"></article>
+        <article class="board-cell" id="4"></article>
+        <article class="board-cell" id="5"></article>
+        <article class="board-cell" id="6"></article>
+        <article class="board-cell" id="7"></article>
+        <article class="board-cell" id="8"></article>
       </section>
     </span>
   </section>
   <section class="player-bar" id="player-2">
     <span class="circle">
-      <h2>&#129373;</h2>
-      <h3 id="player2-wins">Wins: 0</h3>
+      <h3 id="player2-IMG"></h3>
+      <h4 id="player2-wins">Wins: 0</h4>
     </span>
+    <section class="token-picker hidden" id="player2-choice">
+      <h2>Player 2 - Choose your token!</h2>
+      <div class="choice-container">
+        <span class="token-choice open" role="img" aria-label="peach" title="peach">🍑</span>
+        <span class="token-choice open" role="img" aria-label="strawberry" title="strawberry">🍓</span>
+        <span class="token-choice open" role="img" aria-label="orange" title="orange">🍊</span>
+        <span class="token-choice open" role="img" aria-label="lemon" title="lemon">🍋</span>
+        <span class="token-choice open" role="img" aria-label="kiwi" title="kiwi">🥝</span>
+        <span class="token-choice open" role="img" aria-label="blueberry" title="blueberry">🫐</span>
+      </div>
+      <button class="ready">I'm Ready</button>
+    </section>
   </section>
   <script type="text/javascript" src="main.js"></script>
 </body>
