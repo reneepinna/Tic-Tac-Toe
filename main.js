@@ -98,7 +98,7 @@ function prepareBoardForNewGame() {
   clearTokens();
   clearPlayerMoves();
   toggleCellAvailability();
-  toggleTurn();
+  alignFirstTurn();
   renderPlayerTurn();
 }
 
