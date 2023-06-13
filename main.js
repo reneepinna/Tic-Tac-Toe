@@ -12,8 +12,11 @@ var player1Choice = document.getElementById('player1-choice');
 var player2Choice = document.getElementById('player2-choice');
 var buttons = document.querySelectorAll('.ready');
 
+var tokenOptions = document.querySelectorAll('.token-choice');
+
 var turnMessage = document.getElementById('turn-message');
 var chooseMessage = document.getElementById('choose-message');
+
 // Global Variables
 
 var board = {
@@ -21,6 +24,7 @@ var board = {
 }
 
 // Event Listeners
+
 window.addEventListener('load', function() {
   createPlayer("player1", "start",'', true);
   createPlayer("player2", "start", '', false);
@@ -30,16 +34,22 @@ window.addEventListener('load', function() {
 
 player1Choice.addEventListener('click', function(e){
   chooseToken(e, 0, "player1")
+  limitTokenChoice()
 })
 
 player2Choice.addEventListener('click', function(e) {
-  chooseToken(e, 1, "player2")
+  if(!e.target.className.includes('off-limits')) {
+    chooseToken(e, 1, "player2");
+    limitTokenChoice()
+  }
 })
 
-buttons[0].addEventListener('click', function(){
-  initializePlayerTheme();
-  player1Choice.classList.add('hidden');
-  player2Choice.classList.remove('hidden');
+buttons[0].addEventListener('click', function(e){
+  if (e.target.className.includes('selectable')) {
+    initializePlayerTheme();
+    player1Choice.classList.add('hidden');
+    player2Choice.classList.remove('hidden');
+  }
 })
 
 buttons[1].addEventListener('click', function(){
@@ -233,6 +243,15 @@ function chooseToken(e, i, player) {
     board[player].tokenStyle = e.target.title;
 
     buttons[i].classList.add('selectable');
-    buttons[i].classList.add('open');
+  }
+}
+
+function limitTokenChoice () {
+  for (var i = 0; i < tokenOptions.length; i++) {
+    if (board.player1.tokenStyle === tokenOptions[i].title || board.player2.tokenStyle === tokenOptions[i].title){
+      tokenOptions[i].classList.add('off-limits');
+    } else {
+      tokenOptions[i].classList.remove('off-limits');
+    }
   }
 }
