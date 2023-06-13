@@ -126,7 +126,15 @@ function clearPlayerMoves() {
 
 function toggleTurn() {
   board.player1.isTurn = !board.player1.isTurn;
-  board.player2.isTurn = !board.player1.isTurn;
+  board.player2.isTurn = !board.player2.isTurn;
+}
+
+function alignFirstTurn() {
+  board.player1.isFirst = !board.player1.isFirst;
+  board.player2.isFirst = !board.player2.isFirst;
+
+  board.player1.isTurn = board.player1.isFirst;
+  board.player2.isTurn = board.player2.isFirst;
 }
 
 function updateAllMoves(space) {
