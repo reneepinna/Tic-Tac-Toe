@@ -26,8 +26,8 @@ var board = {
 // Event Listeners
 
 window.addEventListener('load', function() {
-  createPlayer("player1", "start",'', true);
-  createPlayer("player2", "start", '', false);
+  createPlayer("player1", "start",'', true, true);
+  createPlayer("player2", "start", '', false, false);
 
   initializePlayerTheme();
 })
@@ -76,13 +76,14 @@ tacContainer.addEventListener('click', function(e) {
 
 // Functions and Event Handlers
 
-function createPlayer(position, tokenStyle, token, isTurn) {
+function createPlayer(position, tokenStyle, token, isTurn, isFirst) {
   board[position] = {
     tokenStyle: tokenStyle,
     token, token,
     moves: [],
     wins: 0,
-    isTurn: isTurn
+    isTurn: isTurn,
+    isFirst: isFirst
   }
 }
 
