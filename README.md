@@ -1,8 +1,14 @@
 # Tic-Tac-Toe
 
+[Click to Demo](https://reneepinna.github.io/Tic-Tac-Toe/)
+
 ### Abstract
 
 This application is a website that allows users to play a classic game of Tic-Tac-Toe. Users are able to choose their token and theme at the beginning of the game. At the end of each game, the player who went second is now the player who goes first. The application tracks and displays each player's wins. 
+
+### Preview of App
+
+![Tic-Tac-Toe DEMO](https://github.com/reneepinna/Tic-Tac-Toe/assets/130389530/ccddd31c-f1f4-4e5c-a90f-e2a76b0accd6)
 
 ### Installation Instructions
 
@@ -13,10 +19,6 @@ To clone down this repository to your local machine:
 1. Cd into the Tic-Tac-Toe repository on your local machine
 1. Open the repository in your text editor
 1. You will have access to the HTML, CSS, and JavaScript files
-
-### Preview of App
-
-![Tic-Tac-Toe DEMO](https://github.com/reneepinna/Tic-Tac-Toe/assets/130389530/ccddd31c-f1f4-4e5c-a90f-e2a76b0accd6)
 
 ### Context
 
